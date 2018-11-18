@@ -7,6 +7,8 @@ import MainTabNavigator from './navigation/MainTabNavigator';
 import ApiKeys from './constants/ApiKeys';
 import * as firebase from 'firebase';
 
+console.disableYellowBox = true;
+
 export default class App extends React.Component {
   
   constructor(props) {
@@ -21,6 +23,7 @@ export default class App extends React.Component {
   if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
   firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 }
+
 
 onAuthStateChanged = (user) => {
   this.setState({isAuthenticationReady: true});

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Text,
   View,
-  Button,
   ListView,
   TouchableHighlight,
   Modal,
@@ -11,7 +10,6 @@ import * as firebase from 'firebase';
 
 import Toolbar from '../components/Toolbar/Toolbar';
 import AddButton from '../components/AddButton/AddButton';
-import SignOutButton from '../components/SignOutButton/SignOutButton';
 import { TextInput } from 'react-native-gesture-handler';
 
 const styles = require('../components/style');
@@ -39,7 +37,7 @@ export default class HomeScreen extends React.Component {
   setModalVisible(visibile){
     this.setState({modalVisible:visibile});
   }
-
+  
   getRef(){
     return firebase.database().ref();  //in firebase documentation
   }
@@ -128,7 +126,7 @@ export default class HomeScreen extends React.Component {
         </View>
       </Modal>
 
-        <Toolbar title="ItemLister"/>
+        <Toolbar title="Home"/>
         <ListView
           dataSource={this.state.itemDataSource}
           renderRow={this.renderRow}>

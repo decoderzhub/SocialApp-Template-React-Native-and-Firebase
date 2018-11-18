@@ -1,10 +1,10 @@
 export default {
     FirebaseConfig: {
-        apiKey: "YOUR-FIREBASE-API-KEY",
-        authDomain: "YOUR-FIREBASE-DOMAIN",
-        databaseURL: "YOUR-FIREBASE-DB-URL",
-        projectId: "YOUR-FIREBASE-PROJECT-ID",
-        storageBucket: "YOUR-FIREBASE-STORAGEBUCKET-URL",
+        apiKey: "AIzaSyD1I6vNEaJLD0y8wFJtplboyKMUjlkhRjE",
+        authDomain: "bugleapp-4b94d.firebaseapp.com",
+        databaseURL: "https://bugleapp-4b94d.firebaseio.com/",
+        projectId: "bugleapp-4b94d",
+        storageBucket: "gs://bugleapp-4b94d.appspot.com",
         messagingSenderId: ""
     }
 }

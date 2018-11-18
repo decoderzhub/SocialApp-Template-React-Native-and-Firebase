@@ -10,7 +10,8 @@ export default class SignUpScreen extends React.Component {
             email:"",
             password: "",
             passwordConfirm: "",
-            displayName: "",
+            firstName: "",
+            lastName: "",
             phoneNumber: "",
          };
     }
@@ -20,17 +21,28 @@ export default class SignUpScreen extends React.Component {
             Alert.alert("Passwords do not match!")  
             return;
         }
-    
+
+        if(this.state.email == ""){
+            Alert.alert("Email Empty!")
+            return;
+        }
+        
+        if(this.state.firstName == "" || this.state.lastName == ""){
+            Alert.alert("First & Last Name!")
+            return;
+        }
+
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(() => { 
-            firebase.auth().currentUser.updatePhoneNumber({
-                phoneCredential: this.state.phoneNumber
-            })
+            //firebase.auth().currentUser.updatePhoneNumber({
+                //phoneCredential: parseInt(this.state.phoneNumber)
+                //reauthenticate(AuthCredential)
+            //})           <==== this has to be done in profile settings after authenticating the user
             firebase.auth().currentUser.updateProfile({
-                displayName: this.state.displayName,
+                displayName: this.state.firstName+' '+this.state.lastName,
                 photoURL: ""
               }).then(function() {
-                // Profile updated successfully!
+                console.log("Profile updated successfully!");
                 var displayName = firebase.auth().currentUser.displayName;
                 // "https://example.com/jane-q-user/profile.jpg"
                 var photoURL = firebase.auth().currentUser.photoURL;
@@ -45,7 +57,7 @@ export default class SignUpScreen extends React.Component {
     }
 
     onBackToLoginPress = () => {
-        this.props.navigation.navigate("Login")
+        this.props.navigation.navigate("Login");
 
     }
 
@@ -88,16 +100,25 @@ export default class SignUpScreen extends React.Component {
 
             <TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.displayName}
-            onChangeText={(text) => { this.setState({displayName: text})}}
-            placeholder="Create Username"
+            onChangeText={(text) => { this.setState({firstName: text})}}
+            placeholder="First Name"
             secureTextEntry={false}
             autoCorrect={false}
             keyboardType="default"
             textContentType="username"
-            />
+            /><View style={{padding:10}}/>
+            
+            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+            value={this.state.displayName}
+            onChangeText={(text) => { this.setState({lastName: text})}}
+            placeholder="Last Name"
+            secureTextEntry={false}
+            autoCorrect={false}
+            keyboardType="default"
+            textContentType="username"
             /><View style={{padding:10}}/>
 
-            <TextInput style={{width: 200, height: 40, borderWidth: 1}}
+            {/*<TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.phoneNumber}
             onChangeText={(text) => { this.setState({phoneNumber: text})}}
             placeholder="123-456-7890"
@@ -105,8 +126,8 @@ export default class SignUpScreen extends React.Component {
             autoCorrect={false}
             keyboardType="phone-pad"
             textContentType="telephoneNumber"
-            maxLength={10}
-            />
+            maxLength={12}
+            />*/}
             <Button title="SignUp" onPress={this.onSignUpPress} />
 
             <Button title="Back to Login..." onPress={this.onBackToLoginPress} />

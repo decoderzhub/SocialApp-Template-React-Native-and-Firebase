@@ -72,5 +72,10 @@ module.exports = StyleSheet.create({
      borderWidth: 1,
      paddingTop: 14,
      paddingBottom: 16,
- }
+ },
+ chatSend: {
+    flex: 1,
+    flexDirection: 'row'
+ },
+
 });

@@ -6,7 +6,8 @@ import MainTabNavigator from './MainTabNavigator';
 import LoginScreen  from './../screens/auth/LoginScreen';
 import SignUpScreen  from './../screens/auth/SignUpScreen';
 import ForgotPasswordScreen  from './../screens/auth/ForgotPasswordScreen';
-
+import ProfileScreen from '../screens/ProfileScreen';
+import ChatScreen from '../screens/ChatScreen';
 
 export default createSwitchNavigator({
   // You could add another route here for authentication.
@@ -14,7 +15,7 @@ export default createSwitchNavigator({
   Login: { screen: LoginScreen },
   SignUp: { screen: SignUpScreen },
   ForgotPassword: { screen: ForgotPasswordScreen },
-
-  Main: { screen: MainTabNavigator }
-  
+  Profile: {screen: ProfileScreen},
+  Chat: { screen: ChatScreen},
+  Main: { screen: MainTabNavigator },
 });
